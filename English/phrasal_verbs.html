@@ -1,0 +1,123 @@
+<html>
+    <head>
+        <title>quiz</title>
+    </head>
+    <body>      
+        
+        <main id="ec-main">
+            <article>
+            <h1>Phrasal Verbs Grammar Quiz</h1>
+            <p class="quizIntro">You can do this grammar quiz <strong>online</strong> or <a href="javascript:window.print()" title="Click to print"><strong>print it</strong></a> on paper. It tests the grammar of phrasal verbs as taught on our <a href="phrasal-verbs.php">Phrasal Verbs</a> page.</p>
+            <form name="quiz" class="mcquiz">
+            <p>1. Phrasal verbs consist of _______ plus one or two other words.</p>
+            <div class="ECnoprint">
+            <input type="radio" name="q1" value="a phrase"> a phrase<br>
+            <input type="radio" name="q1" value="an adverb"> an adverb<br>
+            <input type="radio" name="q1" value="a verb"> a verb
+            </div>
+            <span class="paper-choices">a) a phrase b) an adverb c) a verb</span>
+            <p>2. The other words can be</p>
+            <div class="ECnoprint">
+            <input type="radio" name="q2" value="adverbs or verbs"> adverbs or verbs<br>
+            <input type="radio" name="q2" value="adverbs or prepositions"> adverbs or prepositions<br>
+            <input type="radio" name="q2" value="prepositions or verbs"> prepositions or verbs
+            </div>
+            <span class="paper-choices">a) adverbs or verbs b) adverbs or prepositions c) prepositions or verbs</span>
+            <p>3. &quot;I'll go home and get changed before we go out for dinner.&quot; Which is a phrasal verb?</p>
+            <div class="ECnoprint">
+            <input type="radio" name="q3" value="go home"> go home<br>
+            <input type="radio" name="q3" value="get changed"> get changed<br>
+            <input type="radio" name="q3" value="go out"> go out
+            </div>
+            <span class="paper-choices">a) go home b) get changed c) go out</span>
+            <p>4. Intransitive phrasal verbs (come back, get up, go out, etc) consist of a verb + adverb that _______ be separated. </p>
+            <div class="ECnoprint">
+            <input type="radio" name="q4" value="can"> can<br>
+            <input type="radio" name="q4" value="can never"> can never<br>
+            <input type="radio" name="q4" value="can sometimes"> can sometimes
+            </div>
+            <span class="paper-choices">a) can b) can never c) can sometimes</span>
+            <p>5. &quot;Turn the lights off before you go to bed.&quot; This phrasal verb is</p>
+            <div class="ECnoprint">
+            <input type="radio" name="q5" value="separable"> separable<br>
+            <input type="radio" name="q5" value="inseparable"> inseparable<br>
+            <input type="radio" name="q5" value="unseparated"> unseparated
+            </div>
+            <span class="paper-choices">a) separable b) inseparable c) unseparated</span>
+            <p>6. &quot;I'll drop all of the kids off at school.&quot; This phasal verb's first word is &quot;drop&quot;. Which is the second?</p>
+            <div class="ECnoprint">
+            <input type="radio" name="q6" value="of"> of<br>
+            <input type="radio" name="q6" value="off"> off<br>
+            <input type="radio" name="q6" value="at"> at
+            </div>
+            <span class="paper-choices">a) of b) off c) at</span>
+            <p>7. Which is correct? &quot;If the TV's too loud, _______ .&quot; </p>
+            <div class="ECnoprint">
+            <input type="radio" name="q7" value="turn down"> turn down<br>
+            <input type="radio" name="q7" value="turn down it"> turn down it<br>
+            <input type="radio" name="q7" value="turn it down"> turn it down
+            </div>
+            <span class="paper-choices">a) turn down b) turn down it c) turn it down</span>
+            <p>8. &quot;Do you believe in ghosts?&quot; The second word in this phrasal verb is</p>
+            <div class="ECnoprint">
+            <input type="radio" name="q8" value="a preposition"> a preposition<br>
+            <input type="radio" name="q8" value="an adverb"> an adverb<br>
+            <input type="radio" name="q8" value="a verb"> a verb
+            </div>
+            <span class="paper-choices">a) a preposition b) an adverb c) a verb</span>
+            <p>9. Phrasal verbs with a preposition always have a direct object that comes directly _______ the preposition. </p>
+            <div class="ECnoprint">
+            <input type="radio" name="q9" value="before"> before<br>
+            <input type="radio" name="q9" value="between"> between<br>
+            <input type="radio" name="q9" value="after"> after
+            </div>
+            <span class="paper-choices">a) before b) between c) after</span>
+            <p>10. Which sentence has a three-word phrasal verb with the structure verb + adverb + preposition?</p>
+            <div class="ECnoprint">
+            <input type="radio" name="q10" value="We're running out of milk"> We're running out of milk.<br>
+            <input type="radio" name="q10" value="The milk has run out"> The milk has run out.<br>
+            <input type="radio" name="q10" value="I'll run out to get some"> I'll run out to get some.
+            </div>
+            <span class="paper-choices">a) We're running out of milk. b) The milk has run out. c) I'll run out to get some.</span>
+            <div class="ECnoprint">
+            <p><input name="button" type="button" onclick="getScore(this.form)" value="Check Answer"></p>
+            <p>Your score is: <input id="qscore" type="text" name="percentage"></p>
+            <p>Correct answers:<br>
+            <textarea name="solutions" wrap="virtual" rows="12"></textarea></p>
+            <p><input name="reset" type="reset" value="Start Again"></p>
+            </div>
+            </form>
+            </article>
+            </main>
+            
+            <script>
+
+function getScore(form) {
+  // Define the correct answers
+  const answers = ["c", "a", "b", "a", "b", "b", "c", "a", "c", "c"];
+  let score = 0;
+  let solutions = "";
+
+  // Check the answers and calculate the score
+  for (let i = 1; i <= 10; i++) {
+    const answer = form["q" + i].value;
+    if (answer === answers[i - 1]) {
+      score++;
+      solutions += i + ". " + answer + " (correct)\n";
+    } else {
+      solutions += i + ". " + answer + " (incorrect, should be " + answers[i - 1] + ")\n";
+    }
+  }
+
+  // Display the score and correct answers
+  // const percentage = Math.round(score / 10 * 100);
+  // form.qscore.value = percentage + "%";
+  // form.solutions.value = solutions;
+  const percentage = Math.round(score / 10 * 100);
+  form.qscore.value = percentage + "%";
+  form.solutions.value = solutions;
+}
+
+            </script>
+    </body>
+</html>
