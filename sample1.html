@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiple Quizzes</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="content.css">
+        
+    <style>
+        /* styles.css */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #background-content {
+            filter: none;
+        }
+
+        .quiz-button {
+            margin: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .quiz-button:hover {
+            background-color: #0069d9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Quiz Modals -->
+    <div id="quiz-modal1" class="modal">
+        <div class="modal-content">
+            <div id="question-container" class="hide">
+                <div id="question">Question</div>
+                <label class="option"><input type="radio" name="answer" value="0">Option 1</label>
+                <label class="option"><input type="radio" name="answer" value="1">Option 2</label>
+                <label class="option"><input type="radio" name="answer" value="2">Option 3</label>
+                <label class="option"><input type="radio" name="answer" value="3">Option 4</label>
+                <button id="next-button">Next</button>
+                <div id="correct-answer" class="hide">
+                    <p>Correct Answer: <span id="correct-answer-text"></span></p>
+                  </div>
+              </div>
+              <div id="result-container" class="hide">
+                <h2>Quiz Result</h2>
+                <p>Correct Answers: <span id="score"></span></p>
+              </div>
+              <div id="timer">Time Left: 15:00</div>
+            <!-- Quiz 1 content goes here -->
+        </div>
+    </div>
+    <div id="quiz-modal2" class="modal">
+        <div class="modal-content">
+            
+            <div class="cards" >
+                <style>
+                    .cards {
+                        display: grid;
+                        position: relative;
+                        top:120px;
+                        grid-template-columns: repeat(6, 1fr); /* Three columns */
+                        gap: 5%; /* Gap between cards */
+                        padding-left: 10%; /* Optional container padding */
+                    }
+                  
+                      .card {
+                        width: 100%; /* Adjust card width as needed */
+                        border: 1px solid #ccc;
+                        padding: 10px;
+                        text-align: center;
+                    }
+                </style>
+            <div class="contentcard" id="mancard" onmouseover="playAudio('../audio/bengali/man.mp3')" onmouseout="stopAudio()" style="position: relative;">
+                <style>
+                  #mancard:hover:after {
+                    content: "মানুষ";
+                  }
+                </style>
+                <br>
+                <img src="../img/man.png" alt="Man">
+                মানুহ
+              </div>
+              
+              <div class="contentcard" id="womancard" onmouseover="playAudio('../audio/bengali/woman.mp3')" onmouseout="stopAudio()" style="position: relative;">
+                <style>
+                  #womancard:hover:after {
+                    content: "মহিলা";
+                  }
+                </style>
+                <br>
+                <img src="../img/woman.png" alt="Woman">
+                মহিলা
+              </div>
+    
+            <div class="contentcard" id="boycard" onmouseover="playAudio('../audio/bengali/boy.mp3')" onmouseout="stopAudio()">
+                <style>
+                    #boycard:hover:after {
+                      content: "ছেলে";
+                    }
+                </style>
+                <br>
+                <img src="../img/boy.png">
+                ল’ৰা
+            </div>
+    
+            <div class="contentcard" id="girlcard" onmouseover="playAudio('../audio/bengali/girl.mp3')" onmouseout="stopAudio()">
+                <style>
+                    #girlcard:hover:after {
+                      content: "মেয়ে";
+                    }
+                </style>
+                <br>
+                <img src="../img/girl.png" width="250px">
+                ছোৱালী
+            </div>
+        </div>
+                
+            <!-- Quiz 2 content goes here -->
+        </div>
+    </div>
+    <div id="quiz-modal3" class="modal">
+        <div class="modal-content">
+            3
+            <!-- Quiz 2 content goes here -->
+        </div>
+    </div>
+    <div id="quiz-modal4" class="modal">
+        <div class="modal-content">
+            4
+            <!-- Quiz 2 content goes here -->
+        </div>
+    </div>
+    <div id="quiz-modal5" class="modal">
+        <div class="modal-content">
+            <!-- Quiz 2 content goes here -->
+        </div>
+    </div>
+    <div id="quiz-modal6" class="modal">
+        <div class="modal-content">
+            <!-- Quiz 2 content goes here -->
+        </div>
+    </div>
+    <div id="quiz-modal7" class="modal">
+        <div class="modal-content">
+            <!-- Quiz 2 content goes here -->
+        </div>
+    </div>
+    <div id="quiz-modal8" class="modal">
+        <div class="modal-content">
+            <!-- Quiz 2 content goes here -->
+        </div>
+    </div>
+    <!-- Add more quiz modals here -->
+
+    <!-- Background Content -->
+    <div id="background-content">
+        <!-- Your main page content goes here -->
+        <button class="quiz-button" id="open-quiz1">Quiz 1</button>
+        <button class="quiz-button" id="open-quiz2">Quiz 2</button>
+        <button class="quiz-button" id="open-quiz3">Quiz 3</button>
+        <button class="quiz-button" id="open-quiz4">Quiz 4</button>
+        <button class="quiz-button" id="open-quiz5">Quiz 5</button>
+        <button class="quiz-button" id="open-quiz6">Quiz 6</button>
+        <button class="quiz-button" id="open-quiz7">Quiz 7</button>
+        <button class="quiz-button" id="open-quiz8">Quiz 8</button>
+        <!-- Add more quiz buttons here -->
+    </div>
+
+    <script>
+        // JavaScript code
+        const quizModals = document.querySelectorAll(".modal");
+        const openQuizButtons = document.querySelectorAll(".quiz-button");
+        const backgroundContent = document.getElementById("background-content");
+
+        openQuizButtons.forEach(function(button, index) {
+            button.addEventListener("click", function() {
+                // Show the corresponding quiz modal
+                quizModals[index].style.display = "block";
+
+                // Apply blur effect to background content
+                backgroundContent.style.filter = "blur(3px)";
+            });
+        });
+
+        quizModals.forEach(function(modal) {
+            modal.addEventListener("click", function(event) {
+                if (event.target === modal) {
+                    // Hide the quiz modal
+                    modal.style.display = "none";
+
+                    // Remove the blur effect from background content
+                    backgroundContent.style.filter = "none";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
