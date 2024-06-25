@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz App</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .model {
+      position: relative;
+      top: 300px;
+      display: none;
+      position: fixed;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: transparent;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    #question-container, #result-container {
+      text-align: center;
+    }
+    #next-button {
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #timer {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+<div id="quiz-modal1" class="modal">
+  <div id="question-container" class="hide">
+    <div id="question">Question</div>
+    <label class="option"><input type="radio" name="answer" value="0">Option 1</label>
+    <label class="option"><input type="radio" name="answer" value="1">Option 2</label>
+    <label class="option"><input type="radio" name="answer" value="2">Option 3</label>
+    <label class="option"><input type="radio" name="answer" value="3">Option 4</label>
+    <button id="next-button">Next</button>
+    <div id="correct-answer" class="hide">
+        <p>Correct Answer: <span id="correct-answer-text"></span></p>
+      </div>
+  </div>
+  <div id="result-container" class="hide">
+    <h2>Quiz Result</h2>
+    <p>Correct Answers: <span id="score"></span></p>
+  </div>
+  <div id="timer">Time Left: 15:00</div>
+</div>
+<script>
+  // Add your quiz questions and answers here
+  const questions = [
+    {
+      question: "Question 1?",
+      options: ["Option 1", "Option 2", "Option 3", "Option 4"],
+      answer: 0 // Index of the correct option
+    },
+    {
+      question: "Question 1?",
+      options: ["Option 1", "Option 2", "Option 3", "Option 4"],
+      answer: 3 // Index of the correct option
+    },
+    // Add more questions
+  ];
+
+  const questionContainer = document.getElementById('question-container');
+  const resultContainer = document.getElementById('result-container');
+  const scoreDisplay = document.getElementById('score');
+  const nextButton = document.getElementById('next-button');
+  const timerDisplay = document.getElementById('timer');
+
+  let currentQuestionIndex = 0;
+  let score = 0;
+
+  function showQuestion(question) {
+    const questionElement = document.getElementById('question');
+    const options = document.querySelectorAll('.option label');
+
+    questionElement.innerText = question.question;
+
+    options.forEach((option, index) => {
+      option.innerText = question.options[index];
+      option.querySelector('input').checked = false;
+    });
+  }
+
+  function showNextQuestion() {
+  const selectedOption = document.querySelector('input[name="answer"]:checked');
+
+  if (!selectedOption) {
+    return;
+  }
+
+  // Convert the selected option value to an integer
+  const selectedAnswerIndex = parseInt(selectedOption.value);
+
+  if (questions[currentQuestionIndex].answer === selectedAnswerIndex) {
+    score++;
+  }
+
+  currentQuestionIndex++;
+
+    if (currentQuestionIndex < questions.length) {
+      showQuestion(questions[currentQuestionIndex]);
+    } else {
+      questionContainer.classList.add('hide');
+      resultContainer.classList.remove('hide');
+      scoreDisplay.innerText = score + '/' + questions.length;
+      clearInterval(timerInterval);
+    }
+  }
+
+  let timeRemaining = 900; // 15 minutes in seconds
+  let timerInterval;
+
+  function startTimer() {
+    timerInterval = setInterval(function() {
+      const minutes = Math.floor(timeRemaining / 60);
+      const seconds = timeRemaining % 60;
+      timerDisplay.textContent = `Time Left: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+      if (timeRemaining <= 0) {
+        clearInterval(timerInterval);
+        questionContainer.classList.add('hide');
+        resultContainer.classList.remove('hide');
+        scoreDisplay.innerText = score + '/' + questions.length;
+      }
+
+      timeRemaining--;
+    }, 1000);
+  }
+
+  nextButton.addEventListener('click', showNextQuestion);
+
+  showQuestion(questions[currentQuestionIndex]);
+  startTimer();
+</script>
+</body>
+</html>
